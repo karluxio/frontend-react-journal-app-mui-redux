@@ -4,7 +4,8 @@ import { Grid, Typography } from "@mui/material"
 export const NothingSelectedView = () => {
   return (
     <Grid
-      spacing={0}
+      className='animate__animated animate__fadeIn animate__faster'
+      spacing={1}
       direction="column"
       alignItems="center"
       justifyContent="center"
