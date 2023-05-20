@@ -1,5 +1,3 @@
-import { Google } from "@mui/icons-material"
-
 export const initialState = {
   status: 'checking', // 'checking', 'not authenticated' , 'authenticated'
   uid: null,
