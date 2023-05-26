@@ -1,6 +1,6 @@
-import { Google } from "@mui/icons-material"
+import { Google } from '@mui/icons-material'
 import { Alert, Button, Grid, Link, TextField, Typography } from '@mui/material'
-import { useMemo } from "react"
+import { useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link as RouterLink } from 'react-router-dom'
 import { useForm } from '../../hooks/useForm'
@@ -13,7 +13,6 @@ const formData = {
 }
 
 export const LoginPage = () => {
-
   const dispatch = useDispatch()
 
   const { status, errorMessage } = useSelector(state => state.auth)
@@ -25,31 +24,34 @@ export const LoginPage = () => {
   const onSubmit = (e) => {
     e.preventDefault()
 
-    console.log('formState:', formState);
+    console.log({ formState })
     dispatch(startLoginWithEmailAndPassword(formState))
   }
 
   const onGoogleSignIn = () => {
-    console.log('on Google Sign in');
+    console.log('on Google Sign in')
     dispatch(startGoogleSignIn())
   }
 
   const onEmailAndPasswordSignIn = () => {
-    console.log('formState:', formState);
+    console.log('formState:', formState)
 
     dispatch(startLoginWithEmailAndPassword(formState))
   }
 
   return (
-    <AuthLayout title="Login">
+    <AuthLayout title='Login'>
 
-      <form onSubmit={onSubmit} className='animate__animated animate__fadeIn animate__faster'>
+      <form
+        aria-label='submit-form'
+        onSubmit={onSubmit}
+        className='animate__animated animate__fadeIn animate__faster'>
         <Grid container>
 
           <Grid item xs={12} sx={{ mt: 2 }}>
             <TextField
-              label="email"
-              type="email"
+              label='email'
+              type='email'
               placeholder='email@gmail.com'
               fullWidth
               name='email'
@@ -60,11 +62,14 @@ export const LoginPage = () => {
 
           <Grid item xs={12} sx={{ mt: 2 }}>
             <TextField
-              label="password"
-              type="password"
+              label='password'
+              type='password'
               placeholder='your password here'
               fullWidth
               name='password'
+              inputProps={{
+                'data-testid': 'password'
+              }}
               value={password}
               onChange={onInputChange}
             />
@@ -73,11 +78,11 @@ export const LoginPage = () => {
           <Grid
             container
             spacing={0}
-            display={!!errorMessage ? '' : 'none'}
+            display={errorMessage ? '' : 'none'}
             sx={{ mt: 1 }}
           >
 
-            <Grid item xs={12} >
+            <Grid item xs={12}>
               <Alert severity='error'>{errorMessage}</Alert>
             </Grid>
           </Grid>
@@ -86,6 +91,7 @@ export const LoginPage = () => {
 
             <Grid item xs={12} sm={6}>
               <Button
+                aria-label='login-btn'
                 onClick={onEmailAndPasswordSignIn}
                 disabled={isAuthenticating}
                 type='submit'
@@ -101,7 +107,9 @@ export const LoginPage = () => {
                 disabled={isAuthenticating}
                 variant='contained'
                 fullWidth
-                onClick={onGoogleSignIn}>
+                aria-label='google-btn'
+                onClick={onGoogleSignIn}
+              >
                 <Google />
                 <Typography sx={{ ml: 1 }}>Google</Typography>
               </Button>
@@ -109,8 +117,8 @@ export const LoginPage = () => {
 
           </Grid>
 
-          <Grid container direction="row" justifyContent="end">
-            <Link component={RouterLink} color="inherit" to="/auth/register">
+          <Grid container direction='row' justifyContent='end'>
+            <Link component={RouterLink} color='inherit' to='/auth/register'>
               Create an account
             </Link>
           </Grid>

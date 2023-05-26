@@ -2,6 +2,7 @@ import { collection, deleteDoc, getDocs } from "firebase/firestore/lite"
 import { addNewEmptyNote, savingNewNote, setActiveNote, startNewNote } from "../../../src/store/journal"
 import { firebaseDB } from "../../../src/firebase/config"
 
+jest.setTimeout(8000)
 describe('testing on journal/thunks', () => {
 
   const dispatch = jest.fn()
@@ -10,6 +11,7 @@ describe('testing on journal/thunks', () => {
   beforeEach(() => jest.clearAllMocks())
 
   test("startNewNote should create an empty new note", async () => {
+
     const uid = 'TEST-UID'
     getState.mockReturnValue({ auth: { uid: uid } })
 
