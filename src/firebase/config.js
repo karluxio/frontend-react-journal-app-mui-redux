@@ -43,14 +43,21 @@ import { getEnvironments } from "../helpers";
 //   appId: "1:846045832216:web:2f93fbf77ac145d21d0f6d"
 // };
 
-const {
-  VITE_API_KEY,
-  VITE_AUTH_DOMAIN,
-  VITE_PROJECT_ID,
-  VITE_STORAGE_BUCKET,
-  VITE_MESSAGING_SENDER_ID,
-  VITE_APP_ID,
-} = getEnvironments()
+// const {
+//   VITE_API_KEY,
+//   VITE_AUTH_DOMAIN,
+//   VITE_PROJECT_ID,
+//   VITE_STORAGE_BUCKET,
+//   VITE_MESSAGING_SENDER_ID,
+//   VITE_APP_ID,
+// } = getEnvironments()
+
+const VITE_API_KEY = 'AIzaSyB9keoE22zeS0ZBdt-52D0Z6JBYocSVljQ'
+const VITE_AUTH_DOMAIN = 'react-app-cursos-b3d19.firebaseapp.com'
+const VITE_PROJECT_ID = 'react-app-cursos-b3d19'
+const VITE_STORAGE_BUCKET = 'react-app-cursos-b3d19.appspot.com'
+const VITE_MESSAGING_SENDER_ID = '909935816098'
+const VITE_APP_ID = '1:909935816098:web:dbc7965369089f6bf456fb'
 
 const firebaseConfig = {
   apiKey: VITE_API_KEY,
